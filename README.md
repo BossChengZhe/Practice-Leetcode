@@ -13,4 +13,4 @@ $$distance = abs(nums_1+nums_2+nums_3-target)$$
 &emsp;&emsp;这题若是定长度数字字符，列举出所有的英文字符组合，可以很轻松的通过枚举的方式得出结果，但是输入字符不定长，嵌套的循环数目就不等，所以不能枚举方式列出所有的字符组合。
 1. 递归回溯(不知道这样说正不正确，但这个是我的理解)
     - 循环数目不能够确定，可以通过递归的方式层层嵌套循环，累加
-    ![](https://github.com/BossChengZhe/Practice-Leetcode/Image/17.1.jpg)
+    ![这里不出意外应该是有一张照片的](https://github.com/BossChengZhe/Practice-Leetcode/blob/master/Image/17.1.jpg)
