@@ -29,7 +29,7 @@ vector<vector<int>> threeSum(vector<int> &nums)
             else if (nums[j] + nums[p] + nums[i] < 0)
             {
                 temp = nums[j];
-                while (temp == nums[j] && j != nums.size())
+                while (temp == nums[j] && j != nums.size()-1)
                     j++;
             }
             else
