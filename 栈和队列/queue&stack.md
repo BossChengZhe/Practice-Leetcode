@@ -19,3 +19,14 @@
     * 当栈为空，说明栈中没有元素'('(可以自行构建示例，画图)，将当前`i`压入栈中
     * 当栈不为空，说明栈中有可以匹配的元素')'，弹出栈顶元素后，即可得到当前有效括号的长度
     >  这一题来自官方题解，直接利用栈是不能够计算出最长的有效括号长度的，`-1`、`temp.pop()`的加入可以直接判断当前有效子串的开始位置，神来之笔!
+
+> ## [42.接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
+&emsp;&emsp;看到这种类型的题目我第一个想到的就是单调栈算法，与前面[最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)一样，也是利用单调栈求当前‘凹’型中能够存的雨水体积，当前情况栈不为空的话，有两种情况
+* `height[i]>height[s.top()]`：弹出栈顶，那么距离 `distance=i-s.top()-1`，由于是单调栈，那么一定存在`s.top()>=top`，限制高度为`bound_height=min(height[i], height[s.top()])-height[top]`，然后累加即可
+* 当`height[i]<=height[s.top()]`：复合单调栈情况，`continue`
+    > 图中的栈中存储的是下标而不是具体数值，只是为了便于理解
+<div align=center>
+<img src="../Image/42.gif">
+</div>
+
+    
