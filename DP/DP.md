@@ -21,3 +21,14 @@ $$dp[i]=dp[i-2]+dp[i-1]$$
 > ## [139.单词拆分](https://leetcode-cn.com/problems/word-break/)
 &emsp;&emsp;单词拆分问题可以很轻易的拆解为当前单词与前面单词结果的结合，比如我遍历到`"leetcode"`中的`"code"`，经过查找，发现在词典中，于是我们查找之前，`dp[i-4]`看是否有效，有效当前为`true`，否则为`false`
 &emsp;&emsp;当然查询也可以用其他的方法查，我用二分只是因为我只能想出二分的查找方式。
+
+> ## [718.最长重复子数组](https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/)
+&emsp;&emsp;DP的话，需要确定`dp[i][j]`代表的什么意思，在本题中表示在以`A[i]`和`B[j]`结尾的数组 `A`和 `B`前缀的最大公共后缀，那么状态转移公式就可以写为 
+```C++
+dp[i][j] = (A[i-1] ==  B[j-1]) ? dp[i - 1][j - 1] + 1 : 0;
+```
+&emsp;&emsp;需要注意的是，对于范围内任意`i`,`j`，`dp[i][j]`的值和其左上角的值有关，那么我们需要额外在原有的基础上加上一层数据，保证数组不越界，这也是代码中`dp`数组会在`A.size()`和`B.size()`上加1的原因。
+
+> ## [53.最大子序和](https://leetcode-cn.com/problems/maximum-subarray/)
+&emsp;&emsp;每一个数组中元素只有两种情况，一个是在当前子序列和中，一个是不在，只需要判断该数前面的序列和加上该数与该数对比，取较大的那个。由于结果之和最后一个结果有关，所以只需要设置两个变量，达到$O(1)$空间占用。
+$$f(i)=max(pre+nums_{i},nums_{i})$$
