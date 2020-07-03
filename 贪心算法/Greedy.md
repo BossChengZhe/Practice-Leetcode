@@ -3,3 +3,18 @@
 <div align=center>
 <img src="../Image/45.png">
 </div>
+
+> ## [55. 跳跃游戏](https://leetcode-cn.com/problems/jump-game/)
+&emsp;&emsp;与[跳跃游戏II](https://leetcode-cn.com/problems/jump-game-ii/)相同的原理，也是采用贪心法做，但是不需要关心最短几步可以走到终点，而是能否到达终点，所以只需要关心在区间内，是否无论怎么跳都会跳到值为0的点上，如果可以成功跳过那么返回`true`否则返回`false`
+```C++
+for (int i = 0; i < nums.size(); i++)
+{
+    if (i <= max_pos)
+    // 判断是否在合理的区间范围内
+    {
+        max_pos = max(max_pos, i + nums[i]);
+        if (max_pos >= nums.size() - 1)
+            return true;
+    }
+}
+```
