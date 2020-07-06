@@ -43,3 +43,12 @@ $$f(i)=max(pre+nums_{i},nums_{i})$$
     * 字符串不为空，匹配模式为空，空的匹配模式不能匹配非空字符串，所以所有的 <small>$dp_{i,0}=false \quad 0<i \le size_j$</small>
     * 字符串为空，匹配模式不为空，只有"\*"可以匹配空字符串，需要匹配模式全部为"\*"时，才可以使得 <small>$dp_{0,j}=true \quad 0<j\le size_{p}$</small>
     * 全为空，即 <small>$dp_{0,0}=true$</small>
+
+> ## [62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)
+&emsp;&emsp;观察地图可以得到，由于机器人只能向下或者向上走，那么该位置的走法只跟当前位置的左边或者是右边有关系，那么一个就分解成为子问题，那么可以采用动态规划解该题
+$$dp_{i,j}=dp_{i-1,j}+dp_{i,j-1}$$
+
+> ## [63. 不同路径 II](https://leetcode-cn.com/problems/unique-paths-ii/)
+&emsp;&emsp;观察地图可以得到，由于机器人只能向下或者向上走，当前位置如果不存在障碍物，那么该位置的走法只跟当前位置的左边或者是右边有关系，那么一个就分解成为子问题，那么可以采用动态规划解该题 
+$$dp_{i,j}=dp_{i-1,j}+dp_{i,j-1} \quad if\quad obstacleGrid_{i,j}==1$$
+**暴力解法**害死人，如果采用递归的方式计算，时间超限！！！
