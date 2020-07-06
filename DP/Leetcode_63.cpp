@@ -4,7 +4,6 @@ using namespace std;
 
 int uniquePathsWithObstacles(vector<vector<int>> &obstacleGrid)
 {
-    int res = 0;
     int n = obstacleGrid.size(), m = obstacleGrid[0].size();
     vector<vector<int>> dp(n, vector<int>(m, 0));
     if(obstacleGrid[0][0] == 1)

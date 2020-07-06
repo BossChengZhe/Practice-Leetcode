@@ -3,9 +3,7 @@
 using namespace std;
 
 int uniquePaths(int n, int m) {
-    int res = 0;
     vector<vector<int>> dp(n, vector<int>(m, 0));
-    
     dp[0][0] = 1;
     for(int i = 0; i < n; i++)
     {
