@@ -44,7 +44,7 @@ $$f(i)=max(pre+nums_{i},nums_{i})$$
     * 字符串为空，匹配模式不为空，只有"\*"可以匹配空字符串，需要匹配模式全部为"\*"时，才可以使得 <small>$dp_{0,j}=true \quad 0<j\le size_{p}$</small>
     * 全为空，即 <small>$dp_{0,0}=true$</small>
 
-> ## [62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)
+> ## <span id="62">[62. 不同路径](https://leetcode-cn.com/problems/unique-paths/)</span>
 &emsp;&emsp;观察地图可以得到，由于机器人只能向下或者向上走，那么该位置的走法只跟当前位置的左边或者是右边有关系，那么一个就分解成为子问题，那么可以采用动态规划解该题
 $$dp_{i,j}=dp_{i-1,j}+dp_{i,j-1}$$
 
@@ -52,3 +52,8 @@ $$dp_{i,j}=dp_{i-1,j}+dp_{i,j-1}$$
 &emsp;&emsp;观察地图可以得到，由于机器人只能向下或者向上走，当前位置如果不存在障碍物，那么该位置的走法只跟当前位置的左边或者是右边有关系，那么一个就分解成为子问题，那么可以采用动态规划解该题 
 $$dp_{i,j}=dp_{i-1,j}+dp_{i,j-1} \quad if\quad obstacleGrid_{i,j}==1$$
 **暴力解法**害死人，如果采用递归的方式计算，时间超限！！！
+
+> ## [64.最小路径和](https://leetcode-cn.com/problems/minimum-path-sum/)
+&emsp;&emsp;类似于 [不同路径II](#62)中的思路，该问题可以分解为子问题，即当前位置的最小距离是当前位置的上方位置和左方位置距离的较小值加上当前位置的值，所以可以得到状态转移公式，即 
+$$dp_{i,j}=Grid_{i,j}+dp_{i-1,j}+dp_{i,j-1} \quad i,j>0$$
+同时需要注意，处于第一行或者第一列的分别只能选择左边和上边的`dp`数组中的值。
