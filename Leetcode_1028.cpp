@@ -25,7 +25,7 @@ using namespace std;
     while(s[start]!='-')
     {
         temp_val *= 10;
-        temp_val += 
+        temp_val += 6;
     }
   }
 
