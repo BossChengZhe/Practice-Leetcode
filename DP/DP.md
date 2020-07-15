@@ -120,3 +120,10 @@ dp_{i,j}=min(dp_{i-1,j-1},dp_{i-1,j})+triangle_{i,j}
 $$
 
     > 这道题还有可以优化的空间，例如我们观察动态规划数组可以得到当前层仅仅只和上一层有关，而且当前层的有效值要比上一层多1，所以可以建立一个长为`n`的数组，每次按照上文的状态转移公式从后往前更新`dp`数组即可以优化为n，甚至可以直接在原数组上建立转移矩阵，实现`O(N)`级别的程序
+
+> ## [96. 不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/)
+&emsp;&emsp; 这题本身思路很简单，只需要对每个结点啊作为根节点考虑所有情况累加，可以分解为小的子问题，比如说左子树有多少种情况。状态转移方程可以写为 
+$$
+dp_n = dp_0 \times dp_{n-1}+dp_1 \times dp_{n-2}+...+dp_{n-1} \times dp_{0}
+$$
+[详细题解见Leetcode](https://leetcode-cn.com/problems/unique-binary-search-trees/solution/jian-dan-yi-dong-de-dpjie-jue-si-lu-by-guo-bu-liao/)
