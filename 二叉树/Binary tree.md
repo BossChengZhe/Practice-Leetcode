@@ -13,3 +13,8 @@
     * 如果是叶子节点的左右兄弟，那么没有在叶子节点返回，说明这条根到路径的和跟`num`不相等，所以返回`false`
     * 如果是叶子节点的左右兄弟，这条路径根本不符合条件，返回`false`
 * 不属于以上两种情况，即中间节点，递归寻找左右子树；
+
+> ## [95. 不同的二叉搜索树 II](https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
+&emsp;&emsp;首先声明，本题中需要返回的是各个不同二叉搜索树的根节点，不需要对二叉树遍历，解题思路与 [不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/)相同，循环遍历依次将每一个顶点设置为根节点，并且递归生成左子树和右子树
+
+    注意在递归生成的过程中，如果遇到`l>r`的情况，应该返回`{NULL}`
