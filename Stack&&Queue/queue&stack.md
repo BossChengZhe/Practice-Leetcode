@@ -46,3 +46,38 @@
 <div align=center>
 <img src="../Image/84.gif">
 </div>
+
+> ## [85. 最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
+<div align=center>
+<img src="../Image/85.gif">
+</div>
+
+* **动态规划**：假设我们能够确认以当前格子对应的矩形的最大值，我们只需要确认，左边界 `left`，右边界 `right`，和高`height`，就可以计算出该矩形的面积
+* 首先初始化三个数组`left`、`right`、`height`，其中`left`中填充`0`，`right`中填充`n`，`height`中填充`0`
+    * `height`状态转移：如果矩阵当前值为`0`，高度为`0`，否则`height[i]++`
+$$
+height_i=\left\{
+\begin{array}{rcl}
+height_i+1      &     & matrix[i][j]==1\\
+0    &     & matrix[i][j]==0
+\end{array} \right.
+$$
+    * `left`状态转移：当前状态前的情况在未更新的`left`中都已经考虑过，所以只需要考虑当前位置是不是`0` 
+$$
+left_i=\left\{
+\begin{array}{rcl}
+max(current\_left, left_i)      &     & matrix[i][j]==1\\
+0    &     & matrix[i][j]==0
+\end{array} \right.
+$$
+
+    * `right`状态转移：与`left`相似，但是要从右边开始更新
+$$
+right_i=\left\{
+\begin{array}{rcl}
+min(current\_right, right_i)      &     & matrix[i][j]==1\\
+n    &     & matrix[i][j]==0
+\end{array} \right.
+$$
+
+* **栈**：我们可以将每一层的最大矩形转换成 [柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)中的问题，如果当前`matrix[i][j]=='1'`是，向上找`height`，最后结果写入数组中传入柱状图中最大的矩形对应的函数中，即可以得到每一层最大的矩形，同时在每层最大矩形更新的时候记录全局最大的矩形，可以得到矩阵中的最大矩形面积

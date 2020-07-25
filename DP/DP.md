@@ -127,3 +127,48 @@ $$
 dp_n = dp_0 \times dp_{n-1}+dp_1 \times dp_{n-2}+...+dp_{n-1} \times dp_{0}
 $$
 [详细题解见Leetcode](https://leetcode-cn.com/problems/unique-binary-search-trees/solution/jian-dan-yi-dong-de-dpjie-jue-si-lu-by-guo-bu-liao/)
+
+> ## [410. 分割数组的最大值](https://leetcode-cn.com/problems/split-array-largest-sum/)
+* **动态规划**：**「将数组分割为 mm 段，求……」是动态规划题目常见的问法**，所以采用动态规划解题。`dp[i][j]`表示将前`i`个数分成 `j`段，可以将问题分解为更小的问题，假设前`k`个数，被分成 `j-1`段，剩余`k+1~i`被分为一段，那么我们只需要枚举`k`，而`k`的范围易得为 <small>$0\le k < i$</small>，当`k`为0时，表示前`i`个数被分为一段，那么状态转移方程就可以写为。并且在对数组分段中当<small>$j>i$</small>时，将长为`i`
+$$
+f[i][j]=\min _{k=0}^{i-1}\{\max (f[k][j-1], s u b(k+1, i))\}
+$$
+的数组分为`j`段是并不合法的，由于我们最终的答案是各段子数组和的最大值的最小值，所以当<small>$j>i$</small>时，将 $dp_{i,j}=+\infty$即可，由于我们需要保证最后一段分段的合法性，所以最后一定最少留一个数，所以`k`最多到前`i-1`个数。最后返回的结果是`dp[n][m]`
+* **二分查找**：**「使……最大值尽可能小」是二分搜索题目常见的问法**。这题目的答案一定在$[max(nums), sum(nums)]$区间内，那么我们采用二分法，确定一个数字，使得最终分段的段数跟目标段数相等，且值最小。假设我们得到一个数作为数组分段的最大值，那么所有子数组的和都不能大于该值，我们遍历数组，在遍历的过程中累加元素，如果当前元素和大于该数，则`cnt++`表示又切分出一个子数组，
+    * 如果切分出的子数组大于给定目标子数组数量，那么说明区间和的最大值给的较小，`low = mid + 1`;
+    * 如果切分出的子数组小于等于给定目标子数组数量，那么说明区间和的最大值可能较大，`high = mid`;
+
+> ## [85. 最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
+<div align=center>
+<img src="../Image/85.gif">
+</div>
+
+* **动态规划**：假设我们能够确认以当前格子对应的矩形的最大值，我们只需要确认，左边界 `left`，右边界 `right`，和高`height`，就可以计算出该矩形的面积
+* 首先初始化三个数组`left`、`right`、`height`，其中`left`中填充`0`，`right`中填充`n`，`height`中填充`0`
+    * `height`状态转移：如果矩阵当前值为`0`，高度为`0`，否则`height[i]++`
+$$
+height_i=\left\{
+\begin{array}{rcl}
+height_i+1      &     & matrix[i][j]==1\\
+0    &     & matrix[i][j]==0
+\end{array} \right.
+$$
+    * `left`状态转移：当前状态前的情况在未更新的`left`中都已经考虑过，所以只需要考虑当前位置是不是`0` 
+$$
+left_i=\left\{
+\begin{array}{rcl}
+max(current\_left, left_i)      &     & matrix[i][j]==1\\
+0    &     & matrix[i][j]==0
+\end{array} \right.
+$$
+
+    * `right`状态转移：与`left`相似，但是要从右边开始更新
+$$
+right_i=\left\{
+\begin{array}{rcl}
+min(current\_right, right_i)      &     & matrix[i][j]==1\\
+n    &     & matrix[i][j]==0
+\end{array} \right.
+$$
+
+* **栈**：我们可以将每一层的最大矩形转换成 [柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)中的问题，如果当前`matrix[i][j]=='1'`是，向上找`height`，最后结果写入数组中传入柱状图中最大的矩形对应的函数中，即可以得到每一层最大的矩形，同时在每层最大矩形更新的时候记录全局最大的矩形，可以得到矩阵中的最大矩形面积
