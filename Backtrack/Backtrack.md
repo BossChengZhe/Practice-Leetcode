@@ -53,3 +53,6 @@ for (int i = row - 1, j = column + 1; i >= 0 && j < n; i--, j++)
 
 
 > &emsp;&emsp;不知道是不是引用的效率更高，我在未使用引用的情况下超时，去掉这个参数AC，所以奉劝各位多用引用，具体的参考我还没有找到
+
+> ## [93. 复原IP地址](https://leetcode-cn.com/problems/restore-ip-addresses/)
+&emsp;&emsp;存在限制的条件但在题目中并没有说明，比如说IP地址字段中存在0，但是体现在字符串中只能有一个字符`0`，回溯法，每一位最多放置3位，否则是无效的IP地址。
