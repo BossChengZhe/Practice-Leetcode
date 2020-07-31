@@ -203,3 +203,4 @@ $$
 $$
 
 $dp_i >= \max (j \times(i-j), j \times \operatorname{dp}[i-j])$时，直接跳出循环，证明见[官方详解](https://leetcode-cn.com/problems/integer-break/solution/zheng-shu-chai-fen-by-leetcode-solution/)。官方题解在经过一系列的证明后，得到我们只需要考虑将数字分成2或者3和另外一个数相加的格式，就可以得到最大的积。我在计算示例的过程中发现积的值和当前较小数的函数关系大概是一个离散的凸函数方式(感性认识，没有经过严密推导)，在得到极大值（最大值）直接跳出循环。
+
