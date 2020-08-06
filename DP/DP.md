@@ -204,3 +204,15 @@ $$
 
 $dp_i >= \max (j \times(i-j), j \times \operatorname{dp}[i-j])$时，直接跳出循环，证明见[官方详解](https://leetcode-cn.com/problems/integer-break/solution/zheng-shu-chai-fen-by-leetcode-solution/)。官方题解在经过一系列的证明后，得到我们只需要考虑将数字分成2或者3和另外一个数相加的格式，就可以得到最大的积。我在计算示例的过程中发现积的值和当前较小数的函数关系大概是一个离散的凸函数方式(感性认识，没有经过严密推导)，在得到极大值（最大值）直接跳出循环。
 
+> ## [337. 打家劫舍 III](https://leetcode-cn.com/problems/house-robber-iii/)
+&emsp;&emsp;开辟两个数组，分别计算打劫当前节点和不打劫当前节点的最大收益，分别用`f`和`g`来表示，
+* 如果当前节点被选中那么，状态转移公式是 
+$$
+f_{root} = g_{root.left} + g_{root.right}+root.val
+$$
+* 如果当前节点未被选中，那么左右子树可以被选中也可以不被选中，状态转移公式是 
+$$
+g_{root} = \max\{g_{root.left}, f_{root->left}\}+\max\{g_{root.right}, f_{root->right}\}
+$$
+
+观察上述方法，可以看出当前节点状态只和上一个子节点的是否被选中有关，所以我们只需要记录左右节点被抢劫和不被抢劫的两种情况的最大收益，所以可以对上述算法稍加优化，返回当前节点被抢劫和不被抢劫两种情况的最大收益，减少空间消耗。
