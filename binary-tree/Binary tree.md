@@ -59,3 +59,6 @@ while(!q.empty())
 
 > ## [103. 二叉树的锯齿形层次遍历](https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/)
 &emsp;&emsp;层次遍历，设置一个`flag`，奇数层不变，偶数层翻转
+
+> ## [110. 平衡二叉树](https://leetcode-cn.com/problems/balanced-binary-tree/)
+&emsp;&emsp;平衡二叉树定义为对于以每一个节点为根的子树，左右子树高度差不能超过1，所以在判断是递归判断左右是否是平衡二叉树，同时需要递归求出每一个子树的树高。
