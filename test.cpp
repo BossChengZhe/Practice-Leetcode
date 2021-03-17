@@ -1,25 +1,16 @@
-#include "iostream"
+#include <iostream>
 using namespace std;
-
-class A  
-{  
-public:  
-    virtual void foo()  
-    {  
-        cout<<"A::foo() is called"<<endl;  
-    }  
-};  
-class B:public A  
-{  
-public:  
-    void foo()  
-    {  
-        cout<<"B::foo() is called"<<endl;  
-    }  
-};  
-int main(void)  
-{  
-    A *a = new B();  
-    a->foo();   // 在这里，a虽然是指向A的指针，但是被调用的函数(foo)却是B的!  
-    return 0;  
+template <class T>
+class A
+{
+public:
+    template <class T2>
+    void Func(T2 t) { cout << t; }  //成员函数模板
+};
+int main()
+{
+    A<int> a;
+    a.Func('K');  //成员函数模板Func被实例化
+    a.Func("hello");
+    return 0;
 }

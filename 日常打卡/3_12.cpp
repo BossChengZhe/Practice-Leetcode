@@ -7,15 +7,20 @@ public:
     bool isValidSerialization(string preorder)
     {
         int cnt = 0;
+        int num = 0;
         for(int i = 0; i < preorder.size(); i++)
         {
-            if(cnt==0)
-                return false;
-            else if(preorder[i]=='#')
-                cnt--;
+            if(preorder[i]=='#')
+                num = -1;
+            else if(preorder[i]==',')
+            {
+                cnt+=num;
+                if(cnt<0&&i!=preorder.size()-1)
+                    return false;
+            }
             else
-                cnt++;
+                num = 1;
         }
-        return cnt == 0;
+        return cnt+num == -1;
     }
 };

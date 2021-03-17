@@ -111,11 +111,45 @@ void mergesort(vector<int> &nums, int left, int right)
     }
 }
 
+void sink(vector<int> &nums, int pos, int end)
+{
+    int dad = pos, len = end + 1;
+    int son = dad * 2 + 1;
+    while (son < len)
+    {
+        if (son + 1 < len && nums[son + 1] > nums[son])
+            son++;
+        if (nums[son] <= nums[dad])
+            return;
+        else
+        {
+            // printf("%d %d\n", nums[son], nums[dad]);
+            swap(nums[son], nums[dad]);
+            dad = son;
+            son = dad * 2 + 1;
+        }
+    }
+}
+
+void heapsort(vector<int> &nums)
+{
+    int len = nums.size();
+    for (int i = len / 2 - 1; i >= 0; i--)
+        sink(nums, i, len);
+    for (int i = len - 1; i > 0; i--)
+    {
+        swap(nums[0], nums[i]);
+        sink(nums, 0, i - 1);
+    }
+}
+
 int main(int argc, char const *argv[])
 {
     vector<int> test = {6, 1, 2, 2, 7, 9, 9, 4, 5, 6, 10, 9, 89, 18, 21};
-    mergesort(test, 0, test.size() - 1);
-    insertsort(test);
+    // vector<int> test = {3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6};
+    // mergesort(test, 0, test.size() - 1);
+    // insertsort(test);
+    heapsort(test);
     for (auto i : test)
         cout << i << " ";
     return 0;
