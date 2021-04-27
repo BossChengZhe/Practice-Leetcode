@@ -1,16 +1,13 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-template <class T>
-class A
+
+int main(int argc, char const *argv[])
 {
-public:
-    template <class T2>
-    void Func(T2 t) { cout << t; }  //成员函数模板
-};
-int main()
-{
-    A<int> a;
-    a.Func('K');  //成员函数模板Func被实例化
-    a.Func("hello");
+    vector<int> test{1, 2, 3, 4, 5};
+    swap(test[0], test[1]);
+    for(int a : test)
+        cout << a << endl;
     return 0;
 }
+
+

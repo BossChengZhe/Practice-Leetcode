@@ -15,17 +15,14 @@ class Solution
 public:
     ListNode *reverseList(ListNode *head)
     {
-        if(!head)
-            return nullptr;
-        ListNode *q = head->next;
-        head->next = nullptr;
-        while (q)
+        ListNode *temp_head = new ListNode(INT_MAX, nullptr);
+        while(head)
         {
-            ListNode *temp = q->next;
-            q->next = head;
-            head = q;
-            q = temp;
+            ListNode *p = head->next;
+            head->next = temp_head->next;
+            temp_head->next = head;
+            head = p;
         }
-        return head;
+        return temp_head->next;
     }
 };
