@@ -10,4 +10,8 @@
 如何才能将N = 7 的排列变回到N = 8 呢？
 我们先把被杀掉的C补充回来，然后右移m个人，发现溢出了，再把溢出的补充在最前面
 神奇了 经过这个操作就恢复了N = 8的排列了！
+![约瑟夫环3](../Image/Joseph_ring理解.png)
+
+#### [51.数组中的逆序对](https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)
+![逆序对](../Image/逆序对.png)
 
