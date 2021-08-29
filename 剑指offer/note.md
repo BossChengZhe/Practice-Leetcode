@@ -15,3 +15,7 @@
 #### [51.数组中的逆序对](https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)
 ![逆序对](../Image/逆序对.png)
 
+
+#### [只出现一次的数字](https://leetcode-cn.com/problems/WGki4K/)
+题意可知，只有一个数字出现一次并且其余数字均出现三次，那么可以得知，如果对于某一位的和对3取余，必定为0，那么剩余的32位二进制数对应的整数即为出现一次的数。
+![只出现一次](../Image/只出现一次的数.png)
