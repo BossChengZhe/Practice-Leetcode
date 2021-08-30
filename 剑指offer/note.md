@@ -15,7 +15,17 @@
 #### [51.数组中的逆序对](https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/)
 ![逆序对](../Image/逆序对.png)
 
+<<<<<<< Updated upstream
 
 #### [只出现一次的数字](https://leetcode-cn.com/problems/WGki4K/)
 题意可知，只有一个数字出现一次并且其余数字均出现三次，那么可以得知，如果对于某一位的和对3取余，必定为0，那么剩余的32位二进制数对应的整数即为出现一次的数。
 ![只出现一次](../Image/只出现一次的数.png)
+=======
+#### [整数相除](https://leetcode-cn.com/problems/xoh6Oh/)
+主体思路就是利用位运算和减法模拟除法过程，麻烦的是边界的处理，以及计算过程中可能出现的问题，同级目录源码中[整数除法](./整数除法.cpp)中，返回前的判断，判明是否超限
+```C++
+((a > 0 && b > 0) || (a < 0 && b < 0)) && res > (1ull << 31)-1   // 表明正向超限
+((a < 0 && b > 0) || (a > 0 && b < 0)) && res > (1ull << 31)     // 表明负向超限
+```
+
+>>>>>>> Stashed changes
